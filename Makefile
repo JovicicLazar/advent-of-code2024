@@ -2,10 +2,10 @@
 CC = g++
 
 # Compiler flags
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -O3
 
 # Default target
-all: day1/day1_main
+all: day1/main day2/main
 
 # Rule for day1 binary
 day1/day1_main: day1/main.cpp
@@ -17,7 +17,7 @@ day2/day2_main: day2/main.cpp
 
 # Clean up
 clean:
-	rm -f day1/day1_main day2/day2_main
+	rm -f day1/main day2/main
 
 # Phony targets
 .PHONY: all clean
