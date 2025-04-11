@@ -50,8 +50,6 @@ bool is_good_report(const std::vector<int>& report) {
 
 bool is_good_report_with_dampener(const std::vector<int>& report) {
     if (is_good_report(report)) return true;
-    
-    if (report.size() < 3) return true;
 
     for (size_t i = 0; i < report.size(); ++i) {
         std::vector<int> temp;
