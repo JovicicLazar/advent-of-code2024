@@ -106,10 +106,11 @@ void part2(const std::string& path_to_input) {
     }
 
     StatesWithChecks curr_state = StatesWithChecks::START;
-    GlobalStates global_state = GlobalStates::UNKNOWN;
-    int sum = 0;
-    int num1 = 0, num2 = 0;
-    bool add_to_sum = true;
+    GlobalStates global_state   = GlobalStates::UNKNOWN;
+    int sum                     = 0;
+    int num1                    = 0;
+    int num2                    = 0;
+    bool add_to_sum             = true;
 
     for (size_t i = 0; i < corrupted.size(); ++i) {
         const char ch = corrupted[i];
