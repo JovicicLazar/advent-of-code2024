@@ -2,7 +2,7 @@
 CC = g++
 
 # Compiler flags
-CFLAGS = -Wall -g -O3
+CFLAGS = -Wall -Wextra -g -O3
 
 # Default target
 all: day1/main day2/main day3/main
