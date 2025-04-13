@@ -4,24 +4,34 @@ CC = g++
 # Compiler flags
 CFLAGS = -Wall -Wextra -g -O3
 
+# Source directories
+DAYS = day1 day2 day3 day4
+
+# Output binaries
+EXEC = $(DAYS:%=%/main)
+
 # Default target
-all: day1/main day2/main day3/main
+all: $(EXEC)
 
-# Rule for day1 binary
-day1/day1_main: day1/main.cpp
-	$(CC) $(CFLAGS) -o day1/main day1/main.cpp
+# Rule to build each day's binary
+$(DAYS:%=%/main): %/main: %/main.cpp
+	$(CC) $(CFLAGS) -o $@ $<
 
-# Rule for day2 binary
-day2/day2_main: day2/main.cpp
-	$(CC) $(CFLAGS) -o day2/main day2/main.cpp
+# Automatic dependency generation
+DEPFLAGS = -MT $@ -MMD -MP -MF $*.d
+COMPILE.cpp = $(CC) $(DEPFLAGS) $(CFLAGS) -c
 
-# Rule for day3 binary
-day3/day3_main: day3/main.cpp
-	$(CC) $(CFLAGS) -o day3/main day3/main.cpp
+# Include dependency files
+DEPFILES = $(DAYS:%=%/main.d)
+-include $(DEPFILES)
 
 # Clean up
 clean:
-	rm -f day1/main day2/main day3/main
+	rm -f $(EXEC) $(DEPFILES)
 
 # Phony targets
 .PHONY: all clean
+
+# Ensure dependency files are generated
+%.d: ;
+.PRECIOUS: %.d
