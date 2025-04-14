@@ -40,8 +40,6 @@ enum class StatesWithChecks {
     HAS_SQ,
     HAS_T,
 
-    // ( and ) bcs its mutual
-    OPENBR,
-    CLOSEBR
-
+    // ( bcs on ) we need to break the "building" process
+    OPENBR
 };
